@@ -40,7 +40,7 @@ public class ArrayIntQueue implements IntQueue {
      */
     public ArrayIntQueue() {
         elementData = new int[INITIAL_SIZE];
-        head = 0;
+        head = 0; // should this be null?
         size = 0;
     }
 
@@ -73,12 +73,15 @@ public class ArrayIntQueue implements IntQueue {
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
-    }
+        return size == 0;
+    } // this can't be right?
 
     /** {@inheritDoc} */
     public Integer peek() {
-        return elementData[head];
+
+        if (elementData[head] == 0 && size == 0) {
+            return null;
+        } else { return elementData[head]; }
     }
 
     /** {@inheritDoc} */
